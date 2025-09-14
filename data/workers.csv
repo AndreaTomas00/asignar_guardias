@@ -1,0 +1,33 @@
+name,initials,birth_year,category,state,available_work_hours,available_guard_hours,areas,has_hems,has_coordis,has_guardia_uci,has_guardia_urg,avoid_days,days_assigned_summary
+Nuria Torre,NT,1983,Uci_neonatal,Alta,1688,499,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(tuesday); Coordis(tuesday); Guardia_UCI(tuesday)
+Adrian Ranera,AR,1987,Urgencias,Alta,1688,499,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(wednesday); Coordis(wednesday); Guardia_UCI(wednesday)
+Anna Gelman,AG,1986,Planta,Alta,1688,499,Guardia_UCI,False,False,True,False,,Guardia_UCI(monday)
+Aurora Eslava,AE,1994,Urgencias,Baja,1688,499,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,Guardia_UCI(monday)
+Clara Comalrena,CC,1993,CCEE,Alta,1688,499,Guardia_Urg,False,False,False,True,,
+Daniel de Luis,DD,1990,Uci_neonatal,Alta,1688,499,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(thursday); Coordis(thursday); Guardia_UCI(thursday)
+Diana Garcia,DG,1987,CCEE,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(wednesday)
+Edu Marin,EM,1992,Urgencias,Alta,1688,499,Guardia_Urg,False,False,False,True,,"Guardia_Urg(monday,tuesday)"
+Gemma Merlos,GM,1994,Urgencias,Alta,1688,499,Guardia_Urg,False,False,False,True,sunday,Guardia_Urg(friday)
+Griselda Valles,GV,1984,CCEE,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(wednesday)
+Helvia Benito,HB,1994,Urgencias,Alta,1688,499,Guardia_Urg,False,False,False,True,"monday, tuesday, wednesday, thursday",Guardia_Urg(friday)
+Irene Baena,IB,1982,Urgencias,Alta,1688,499,"Guardia_Urg, Guardia_UCI",False,False,True,True,,Guardia_UCI(thursday); Guardia_Urg(thursday)
+Jacobo Perez,JP,1977,CCEE,Alta,1688,499,Guardia_Urg,False,False,False,True,,
+Judith Sanchez,JS,1983,Planta,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(thursday)
+Lluis Renter,LR,1977,Uci_pediatrica,Alta,1688,499,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(thursday); Coordis(thursday); Guardia_UCI(thursday)
+Maria Coma,MC,1987,Planta,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(monday)
+Maria Garcia Besteiro,MB,1986,Uci_pediatrica,Alta,1688,499,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(wednesday); Coordis(wednesday); Guardia_UCI(wednesday)
+Maria Gual,MG,1990,Uci_pediatrica,Alta,1688,499,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(tuesday); Coordis(tuesday); Guardia_UCI(tuesday)
+Marina Pedrosa,MP,1994,CCEE,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(thursday)
+Marta Sarda,MS,1983,Uci_neonatal,Alta,1688,499,Guardia_UCI,False,False,True,False,,Guardia_UCI(wednesday)
+Marta Susana,MSu,1992,CCEE,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(tuesday)
+Miguel Garcia,MG,1981,CCEE,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(wednesday)
+Mireia Garcia Cusco,MC,1984,Uci_pediatrica,Alta,1688,399,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(monday); Coordis(monday); Guardia_UCI(monday)
+Nuria Cahis,NC,1989,Urgencias,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(thursday)
+Paula Ribes,PR,1993,planta,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(wednesday)
+Pilar Diez del Corral,PD,1990,Uci_neonatal,Alta,1688,399,"HEMS, Coordis, Guardia_UCI",True,True,True,False,,HEMS(monday); Coordis(monday); Guardia_UCI(monday)
+Roberto Velasco,RV,1980,Urgencias,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(monday)
+Romina Conti,RC,1990,Planta,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(thursday)
+Violeta Fariña,VF,1990,Planta,Alta,1688,499,Guardia_Urg,False,False,False,True,,Guardia_Urg(friday)
+Sara Garcia Gomez,GaGo,1995,extra,Alta,1688,499,"Guardia_UCI, Guardia_Urg",False,False,True,True,,Guardia_Urg(tuesday)
+J.C.,LC,2000,extra,Alta,1688,499,Guardia_urg,False,False,False,False,,
+Anabel Prigent,AP,2000,Uci_neonatal,Alta,1688,499,Guardia_UCI,False,False,True,False,,Guardia_UCI(tuesday)

@@ -1,0 +1,717 @@
+[
+  {
+    "name": "Nuria Torre",
+    "initials": "NT",
+    "birth_year": 1983,
+    "category": "Uci_neonatal",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "tuesday"
+      ],
+      "Coordis": [
+        "tuesday"
+      ],
+      "Guardia_UCI": [
+        "tuesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": [
+    ]
+  },
+  {
+    "name": "Adrian Ranera",
+    "initials": "AR",
+    "birth_year": 1987,
+    "category": "Urgencias",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "wednesday"
+      ],
+      "Coordis": [
+        "wednesday"
+      ],
+      "Guardia_UCI": [
+        "wednesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {
+      "Coordis_dia": [
+        "friday"
+      ],
+      "HEMS_tarde": [
+        "friday"
+      ]
+    },
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Anna Gelman",
+    "initials": "AG",
+    "birth_year": 1986,
+    "category": "Planta",
+    "state": "Alta",
+    "areas": [
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "Guardia_UCI": [
+        "monday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Aurora Eslava",
+    "initials": "AE",
+    "birth_year": 1994,
+    "category": "Urgencias",
+    "state": "Baja",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "Guardia_UCI": [
+        "monday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Clara Comalrena",
+    "initials": "CC",
+    "birth_year": 1993,
+    "category": "CCEE",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {},
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Daniel de Luis",
+    "initials": "DD",
+    "birth_year": 1990,
+    "category": "Uci_neonatal",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "thursday"
+      ],
+      "Coordis": [
+        "thursday"
+      ],
+      "Guardia_UCI": [
+        "thursday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Diana Garcia",
+    "initials": "DG",
+    "birth_year": 1987,
+    "category": "CCEE",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "wednesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Edu Marin",
+    "initials": "EM",
+    "birth_year": 1992,
+    "category": "Urgencias",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "monday",
+        "tuesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Gemma Merlos",
+    "initials": "GM",
+    "birth_year": 1994,
+    "category": "Urgencias",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "friday"
+      ]
+    },
+    "avoid_days": [
+      "sunday"
+    ],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Griselda Valles",
+    "initials": "GV",
+    "birth_year": 1984,
+    "category": "CCEE",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "wednesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Helvia Benito",
+    "initials": "HB",
+    "birth_year": 1994,
+    "category": "Urgencias",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "friday"
+      ]
+    },
+    "avoid_days": [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday"
+    ],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Irene Baena",
+    "initials": "IB",
+    "birth_year": 1982,
+    "category": "Urgencias",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg", 
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "Guardia_UCI": [
+        "thursday"
+      ],
+      "Guardia_Urg": [
+        "thursday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Jacobo Perez",
+    "initials": "JP",
+    "birth_year": 1977,
+    "category": "CCEE",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {},
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Judith Sanchez",
+    "initials": "JS",
+    "birth_year": 1983,
+    "category": "Planta",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "thursday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Lluis Renter",
+    "initials": "LR",
+    "birth_year": 1977,
+    "category": "Uci_pediatrica",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "thursday"
+      ],
+      "Coordis": [
+        "thursday"
+      ],
+      "Guardia_UCI": [
+        "thursday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Maria Coma",
+    "initials": "MC",
+    "birth_year": 1987,
+    "category": "Planta",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "monday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Maria Garcia Besteiro",
+    "initials": "MB",
+    "birth_year": 1986,
+    "category": "Uci_pediatrica",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "wednesday"
+      ],
+      "Coordis": [
+        "wednesday"
+      ],
+      "Guardia_UCI": [
+        "wednesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Maria Gual",
+    "initials": "MG",
+    "birth_year": 1990,
+    "category": "Uci_pediatrica",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "tuesday"
+      ],
+      "Coordis": [
+        "tuesday"
+      ],
+      "Guardia_UCI": [
+        "tuesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Marina Pedrosa",
+    "initials": "MP",
+    "birth_year": 1994,
+    "category": "CCEE",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "thursday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Marta Sarda",
+    "initials": "MS",
+    "birth_year": 1983,
+    "category": "Uci_neonatal",
+    "state": "Alta",
+    "areas": [
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "Guardia_UCI": [
+        "wednesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Marta Susana",
+    "initials": "MSu",
+    "birth_year": 1992,
+    "category": "CCEE",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "tuesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Miguel Garcia",
+    "initials": "MG",
+    "birth_year": 1981,
+    "category": "CCEE",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "wednesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Mireia Garcia Cusco",
+    "initials": "MC",
+    "birth_year": 1984,
+    "category": "Uci_pediatrica",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "monday"
+      ],
+      "Coordis": [
+        "monday"
+      ],
+      "Guardia_UCI": [
+        "monday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 399,
+    "ooo_days": []
+  },
+  {
+    "name": "Nuria Cahis",
+    "initials": "NC",
+    "birth_year": 1989,
+    "category": "Urgencias",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "thursday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Paula Ribes",
+    "initials": "PR",
+    "birth_year": 1993,
+    "category": "planta",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "wednesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Pilar Diez del Corral",
+    "initials": "PD",
+    "birth_year": 1990,
+    "category": "Uci_neonatal",
+    "state": "Alta",
+    "areas": [
+      "HEMS",
+      "Coordis",
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "HEMS": [
+        "monday"
+      ],
+      "Coordis": [
+        "monday"
+      ],
+      "Guardia_UCI": [
+        "monday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 399,
+    "ooo_days": []
+  },
+  {
+    "name": "Roberto Velasco",
+    "initials": "RV",
+    "birth_year": 1980,
+    "category": "Urgencias",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "monday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Romina Conti",
+    "initials": "RC",
+    "birth_year": 1990,
+    "category": "Planta",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "thursday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Violeta Fari\u00f1a",
+    "initials": "VF",
+    "birth_year": 1990,
+    "category": "Planta",
+    "state": "Alta",
+    "areas": [
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "friday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Sara Garcia Gomez",
+    "initials": "GaGo",
+    "birth_year": 1995,
+    "category": "extra",
+    "state": "Alta",
+    "areas": [
+      "Guardia_UCI",
+      "Guardia_Urg"
+    ],
+    "days_assigned": {
+      "Guardia_Urg": [
+        "tuesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "J.C.",
+    "initials": "LC",
+    "birth_year": 2000,
+    "category": "extra",
+    "state": "Alta",
+    "areas": [
+      "Guardia_urg"
+    ],
+    "days_assigned": {},
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  },
+  {
+    "name": "Anabel Prigent",
+    "initials": "AP",
+    "birth_year": 2000,
+    "category": "Uci_neonatal",
+    "state": "Alta",
+    "areas": [
+      "Guardia_UCI"
+    ],
+    "days_assigned": {
+      "Guardia_UCI": [
+        "tuesday"
+      ]
+    },
+    "avoid_days": [],
+    "section_day_constraints": {},
+    "available_work_hours": 1688,
+    "available_guard_hours": 499,
+    "ooo_days": []
+  }
+]

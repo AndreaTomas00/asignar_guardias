@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  shift-assignment:
+    build: .
+    container_name: guardias_pedi
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - doctor-shifts-network
+
+  streamlit-app:
+    build: .
+    container_name: doctor-shift-visualization
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./:/app
+      - ./data:/app/data
+    command: streamlit run login.py
+    depends_on:
+      - shift-assignment
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - doctor-shifts-network
+
+networks:
+  doctor-shifts-network:
+    driver: bridge
+
+volumes:
+  data:

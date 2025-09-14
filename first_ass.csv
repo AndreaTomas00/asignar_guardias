@@ -1,0 +1,68 @@
+date,day_of_week,section_name,worker_name,hours,libra,is_festivo,is_weekend,period
+2025-07-01,Tuesday,HEMS_tarde,Nuria Torre,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-02,Wednesday,HEMS_tarde,Adrian Ranera,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-03,Thursday,HEMS_tarde,Dani de Luis,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-04,Friday,HEMS_tarde,Lluis Renter,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-14,Monday,HEMS_tarde,Mireia Garcia Cusco,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-15,Tuesday,HEMS_tarde,Maria Gual,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-16,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-17,Thursday,HEMS_tarde,Dani de Luis,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-18,Friday,HEMS_tarde,Pilar Diez del Corral,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-28,Monday,HEMS_tarde,Mireia Garcia Cusco,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-29,Tuesday,HEMS_tarde,Nuria Torre,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-30,Wednesday,HEMS_tarde,Adrian Ranera,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-31,Thursday,HEMS_tarde,Lluis Renter,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-01,Friday,HEMS_tarde,Maria Garcia Besteiro,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-11,Monday,HEMS_tarde,Pilar Diez del Corral,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-12,Tuesday,HEMS_tarde,Maria Gual,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-13,Wednesday,HEMS_tarde,Adrian Ranera,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-14,Thursday,HEMS_tarde,Dani de Luis,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-25,Monday,HEMS_tarde,Mireia Garcia Cusco,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-26,Tuesday,HEMS_tarde,Nuria Torre,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-27,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-28,Thursday,HEMS_tarde,Lluis Renter,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-29,Friday,HEMS_tarde,Maria Gual,8.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-09,Monday,Coordis_diurno,Pilar Diez del Corral,12.0,False,False,False,Periode: Jun 01 - Aug 31
+2025-06-26,Thursday,Coordis_diurno,Dani de Luis,12.0,False,False,False,Periode: Jun 01 - Aug 31
+2025-07-08,Tuesday,Coordis_diurno,Nuria Torre,12.0,False,False,False,Periode: Jun 01 - Aug 31
+2025-07-25,Friday,Coordis_diurno,Adrian Ranera,12.0,False,False,False,Periode: Jun 01 - Aug 31
+2025-08-06,Wednesday,Coordis_diurno,Maria Garcia Besteiro,12.0,False,False,False,Periode: Jun 01 - Aug 31
+2025-08-18,Monday,Coordis_diurno,Mireia Garcia Cusco,12.0,False,False,False,Periode: Jun 01 - Aug 31
+2025-06-09,Monday,Coordis_nocturno,Mireia Garcia Cusco,12.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-26,Thursday,Coordis_nocturno,Lluis Renter,12.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-08,Tuesday,Coordis_nocturno,Maria Gual,12.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-25,Friday,Coordis_nocturno,Pilar Diez del Corral,12.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-06,Wednesday,Coordis_nocturno,Adrian Ranera,12.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-08-18,Monday,Coordis_nocturno,Pilar Diez del Corral,12.0,True,False,False,Periode: Jun 01 - Aug 31
+2025-07-06,Sunday,HEMS_festivo,Nuria Torre,8.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-07-20,Sunday,HEMS_festivo,Dani de Luis,8.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-08-03,Sunday,HEMS_festivo,Lluis Renter,8.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-08-15,Friday,HEMS_festivo,Maria Garcia Besteiro,8.0,True,True,False,Periode: Jun 01 - Aug 31
+2025-08-17,Sunday,HEMS_festivo,Maria Gual,8.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-08-31,Sunday,HEMS_festivo,Maria Garcia Besteiro,8.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-01,Sunday,Coordis_festivo,Nuria Torre,12.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-28,Saturday,Coordis_festivo,Adrian Ranera,12.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-08-10,Sunday,Coordis_festivo,Dani de Luis,12.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-01,Sunday,UCI_G_festivo,Adrian Ranera,24.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-02,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-03,Tuesday,UCI_G_lab,Sara Garcia Gomez,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-04,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-05,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-06,Friday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-07,Saturday,UCI_G_festivo,Anna Gelman,24.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-08,Sunday,UCI_G_festivo,Anabel Prigent,24.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-09,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-10,Tuesday,UCI_G_lab,Sara Garcia Gomez,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-11,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-12,Thursday,UCI_G_lab,Dani de Luis,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-13,Friday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-14,Saturday,UCI_G_festivo,Dani de Luis,24.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-15,Sunday,UCI_G_festivo,Lluis Renter,24.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-16,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-17,Tuesday,UCI_G_lab,Sara Garcia Gomez,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-18,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-19,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-20,Friday,UCI_G_lab,Sara Garcia Gomez,7.6,True,False,False,Periode: Jun 01 - Aug 31
+2025-06-21,Saturday,UCI_G_festivo,Maria Garcia Besteiro,24.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-22,Sunday,UCI_G_festivo,Nuria Torre,24.0,True,False,True,Periode: Jun 01 - Aug 31
+2025-06-23,Monday,UCI_G_lab,Mireia Garcia Cusco,7.6,True,False,False,Periode: Jun 01 - Aug 31
