@@ -10,3 +10,219 @@ date,day_of_week,section_name,worker_name,hours,libra,is_festivo,is_weekend,peri
 2026-05-25,Monday,Coordis_diurno,Pilar Diez del Corral,12,False,False,False,Periode: Jan 01 - Jun 30
 2026-06-11,Thursday,Coordis_diurno,Daniel de Luis,12,False,False,False,Periode: Jan 01 - Jun 30
 2026-06-23,Tuesday,Coordis_diurno,Maria Gual,12,False,False,False,Periode: Jan 01 - Jun 30
+2026-01-24,Saturday,Coordis_festivo_dia,Lluis Renter,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-04,Saturday,Coordis_festivo_dia,Maria Garcia Besteiro,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-17,Sunday,Coordis_festivo_dia,Mireia Garcia Cusco,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-06-13,Saturday,Coordis_festivo_dia,Adrian Ranera,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-24,Saturday,Coordis_festivo_noche,Nuria Torre,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-04,Saturday,Coordis_festivo_noche,Daniel de Luis,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-17,Sunday,Coordis_festivo_noche,Pilar Diez del Corral,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-06-13,Saturday,Coordis_festivo_noche,Lluis Renter,12,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-03,Saturday,HEMS_festivo,Maria Garcia Besteiro,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-04,Sunday,HEMS_festivo,Maria Gual,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-17,Saturday,HEMS_festivo,Mireia Garcia Cusco,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-18,Sunday,HEMS_festivo,Adrian Ranera,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-31,Saturday,HEMS_festivo,Nuria Torre,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-01,Sunday,HEMS_festivo,Daniel de Luis,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-14,Saturday,HEMS_festivo,Pilar Diez del Corral,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-15,Sunday,HEMS_festivo,Lluis Renter,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-28,Saturday,HEMS_festivo,Maria Garcia Besteiro,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-01,Sunday,HEMS_festivo,Maria Gual,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-14,Saturday,HEMS_festivo,Mireia Garcia Cusco,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-15,Sunday,HEMS_festivo,Adrian Ranera,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-28,Saturday,HEMS_festivo,Nuria Torre,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-29,Sunday,HEMS_festivo,Daniel de Luis,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-11,Saturday,HEMS_festivo,Pilar Diez del Corral,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-12,Sunday,HEMS_festivo,Lluis Renter,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-25,Saturday,HEMS_festivo,Maria Garcia Besteiro,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-26,Sunday,HEMS_festivo,Maria Gual,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-09,Saturday,HEMS_festivo,Mireia Garcia Cusco,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-10,Sunday,HEMS_festivo,Adrian Ranera,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-23,Saturday,HEMS_festivo,Nuria Torre,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-24,Sunday,HEMS_festivo,Daniel de Luis,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-06-06,Saturday,HEMS_festivo,Pilar Diez del Corral,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-06-07,Sunday,HEMS_festivo,Lluis Renter,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-06-20,Saturday,HEMS_festivo,Maria Garcia Besteiro,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-06-21,Sunday,HEMS_festivo,Maria Gual,8,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-01,Thursday,UCI_G_festivo,Adrian Ranera,24,True,True,False,Periode: Jan 01 - Jun 30
+2026-01-02,Friday,HEMS_tarde,Mireia Garcia Cusco,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-02,Friday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-03,Saturday,UCI_G_festivo,Anna Gelman,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-04,Sunday,UCI_G_festivo,Anabel Prigent,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-05,Monday,UCI_G_lab,Mireia Garcia Cusco,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-06,Tuesday,UCI_G_festivo,Daniel de Luis,24,True,True,False,Periode: Jan 01 - Jun 30
+2026-01-07,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-08,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-09,Friday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-10,Saturday,UCI_G_festivo,Irene Baena,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-11,Sunday,UCI_G_festivo,Lluis Renter,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-12,Monday,HEMS_tarde,Pilar Diez del Corral,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-12,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-13,Tuesday,HEMS_tarde,Nuria Torre,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-13,Tuesday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-14,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-14,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-15,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-15,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-16,Friday,HEMS_tarde,Adrian Ranera,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-16,Friday,UCI_G_lab,Maria Garcia Besteiro,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-17,Saturday,UCI_G_festivo,Maria Gual,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-18,Sunday,UCI_G_festivo,Maria Garcia Besteiro,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-19,Monday,UCI_G_lab,Pilar Diez del Corral,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-20,Tuesday,UCI_G_lab,Nuria Torre,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-21,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-22,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-23,Friday,UCI_G_lab,Mireia Garcia Cusco,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-24,Saturday,UCI_G_festivo,Marta Sarda,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-25,Sunday,UCI_G_festivo,Mireia Garcia Cusco,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-01-26,Monday,HEMS_tarde,Pilar Diez del Corral,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-26,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-27,Tuesday,HEMS_tarde,Nuria Torre,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-27,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-28,Wednesday,HEMS_tarde,Adrian Ranera,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-28,Wednesday,UCI_G_lab,Maria Garcia Besteiro,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-29,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-29,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-30,Friday,HEMS_tarde,Lluis Renter,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-30,Friday,UCI_G_lab,Pilar Diez del Corral,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-01-31,Saturday,UCI_G_festivo,Adrian Ranera,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-01,Sunday,UCI_G_festivo,Pilar Diez del Corral,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-02,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-03,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-04,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-05,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-06,Friday,UCI_G_lab,Nuria Torre,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-07,Saturday,UCI_G_festivo,Anna Gelman,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-08,Sunday,UCI_G_festivo,Nuria Torre,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-09,Monday,HEMS_tarde,Mireia Garcia Cusco,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-09,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-10,Tuesday,HEMS_tarde,Maria Gual,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-10,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-11,Wednesday,HEMS_tarde,Adrian Ranera,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-11,Wednesday,UCI_G_lab,Maria Garcia Besteiro,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-12,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-12,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-13,Friday,HEMS_tarde,Maria Gual,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-13,Friday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-14,Saturday,UCI_G_festivo,Daniel de Luis,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-15,Sunday,UCI_G_festivo,Anabel Prigent,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-16,Monday,UCI_G_lab,Mireia Garcia Cusco,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-17,Tuesday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-18,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-19,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-20,Friday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-21,Saturday,UCI_G_festivo,Irene Baena,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-22,Sunday,UCI_G_festivo,Lluis Renter,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-02-23,Monday,HEMS_tarde,Pilar Diez del Corral,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-23,Monday,UCI_G_lab,Mireia Garcia Cusco,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-24,Tuesday,HEMS_tarde,Nuria Torre,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-24,Tuesday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-25,Wednesday,HEMS_tarde,Adrian Ranera,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-25,Wednesday,UCI_G_lab,Maria Garcia Besteiro,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-26,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-26,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-27,Friday,HEMS_tarde,Adrian Ranera,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-27,Friday,UCI_G_lab,Maria Garcia Besteiro,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-02-28,Saturday,UCI_G_festivo,Maria Gual,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-01,Sunday,UCI_G_festivo,Marta Sarda,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-02,Monday,UCI_G_lab,Pilar Diez del Corral,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-03,Tuesday,UCI_G_lab,Nuria Torre,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-04,Wednesday,UCI_G_lab,Adrian Ranera,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-05,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-06,Friday,UCI_G_lab,Adrian Ranera,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-07,Saturday,UCI_G_festivo,Maria Garcia Besteiro,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-08,Sunday,UCI_G_festivo,Mireia Garcia Cusco,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-09,Monday,HEMS_tarde,Pilar Diez del Corral,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-09,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-10,Tuesday,HEMS_tarde,Nuria Torre,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-10,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-11,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-11,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-12,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-12,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-13,Friday,HEMS_tarde,Maria Gual,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-13,Friday,UCI_G_lab,Adrian Ranera,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-14,Saturday,UCI_G_festivo,Pilar Diez del Corral,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-15,Sunday,UCI_G_festivo,Anna Gelman,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-16,Monday,UCI_G_lab,Pilar Diez del Corral,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-17,Tuesday,UCI_G_lab,Nuria Torre,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-18,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-19,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-20,Friday,UCI_G_lab,Adrian Ranera,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-21,Saturday,UCI_G_festivo,Nuria Torre,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-22,Sunday,UCI_G_festivo,Adrian Ranera,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-23,Monday,HEMS_tarde,Mireia Garcia Cusco,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-23,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-24,Tuesday,HEMS_tarde,Maria Gual,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-24,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-25,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-25,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-26,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-26,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-27,Friday,HEMS_tarde,Mireia Garcia Cusco,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-27,Friday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-28,Saturday,UCI_G_festivo,Daniel de Luis,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-29,Sunday,UCI_G_festivo,Anabel Prigent,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-03-30,Monday,UCI_G_lab,Mireia Garcia Cusco,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-03-31,Tuesday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-01,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-02,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-03,Friday,UCI_G_festivo,Lluis Renter,24,True,True,False,Periode: Jan 01 - Jun 30
+2026-04-04,Saturday,UCI_G_festivo,Irene Baena,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-05,Sunday,UCI_G_festivo,Maria Gual,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-06,Monday,UCI_G_festivo,Marta Sarda,24,True,True,False,Periode: Jan 01 - Jun 30
+2026-04-07,Tuesday,HEMS_tarde,Nuria Torre,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-07,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-08,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-08,Wednesday,UCI_G_lab,Adrian Ranera,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-09,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-09,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-10,Friday,HEMS_tarde,Pilar Diez del Corral,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-10,Friday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-11,Saturday,UCI_G_festivo,Maria Garcia Besteiro,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-12,Sunday,UCI_G_festivo,Mireia Garcia Cusco,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-13,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-14,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-15,Wednesday,UCI_G_lab,Adrian Ranera,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-16,Thursday,UCI_G_lab,Daniel de Luis,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-17,Friday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-18,Saturday,UCI_G_festivo,Pilar Diez del Corral,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-19,Sunday,UCI_G_festivo,Anna Gelman,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-20,Monday,HEMS_tarde,Mireia Garcia Cusco,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-20,Monday,UCI_G_lab,Pilar Diez del Corral,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-21,Tuesday,HEMS_tarde,Nuria Torre,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-21,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-22,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-22,Wednesday,UCI_G_lab,Adrian Ranera,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-23,Thursday,HEMS_tarde,Lluis Renter,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-23,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-24,Friday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-24,Friday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-25,Saturday,UCI_G_festivo,Nuria Torre,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-26,Sunday,UCI_G_festivo,Adrian Ranera,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-04-27,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-28,Tuesday,UCI_G_lab,Anabel Prigent,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-29,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-04-30,Thursday,UCI_G_lab,Lluis Renter,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-01,Friday,UCI_G_festivo,Daniel de Luis,24,True,True,False,Periode: Jan 01 - Jun 30
+2026-05-02,Saturday,UCI_G_festivo,Anabel Prigent,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-03,Sunday,UCI_G_festivo,Lluis Renter,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-04,Monday,HEMS_tarde,Mireia Garcia Cusco,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-04,Monday,UCI_G_lab,Anna Gelman,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-05,Tuesday,HEMS_tarde,Nuria Torre,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-05,Tuesday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-06,Wednesday,HEMS_tarde,Maria Garcia Besteiro,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-06,Wednesday,UCI_G_lab,Marta Sarda,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-07,Thursday,HEMS_tarde,Daniel de Luis,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-07,Thursday,UCI_G_lab,Irene Baena,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-08,Friday,HEMS_tarde,Pilar Diez del Corral,8,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-08,Friday,UCI_G_lab,Maria Gual,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-09,Saturday,UCI_G_festivo,Irene Baena,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-10,Sunday,UCI_G_festivo,Maria Gual,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-11,Monday,UCI_G_festivo,Marta Sarda,24,True,True,False,Periode: Jan 01 - Jun 30
+2026-05-12,Tuesday,UCI_G_lab,Nuria Torre,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-13,Wednesday,UCI_G_lab,Maria Garcia Besteiro,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-14,Thursday,UCI_G_lab,Daniel de Luis,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-15,Friday,UCI_G_lab,Mireia Garcia Cusco,7.6,True,False,False,Periode: Jan 01 - Jun 30
+2026-05-16,Saturday,UCI_G_festivo,Maria Garcia Besteiro,24,True,False,True,Periode: Jan 01 - Jun 30
+2026-05-17,Sunday,UCI_G_festivo,Anna Gelman,24,True,False,True,Periode: Jan 01 - Jun 30

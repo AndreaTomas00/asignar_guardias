@@ -647,7 +647,7 @@ def main():
                 xlsx_bytes = build_bytes(filtered_df)
 
                 st.download_button(
-                    label="📥 Download monthly assignments (.xlsx)",
+                    label="📥 Descarrega les assignacions en Excel",
                     data=xlsx_bytes,
                     file_name="Monthly_Assignments.xlsx",
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
@@ -777,12 +777,8 @@ def main():
                             pivot_df['Total'] = pivot_df.sum(axis=1)
 
                             # Add areas column to pivot_df
-                           
-                            with open("data/workers.json", "r") as f:
-                                workers_data = json.load(f)
-                            
-                            # Then convert the JSON back to Worker objects if needed
-                            workers = [Worker(**worker_data) for worker_data in workers_data]
+                            # Get workers from the database
+                            workers = db.get_workers()
                             uci = {}
                             urg = {}
                             for worker in workers:
@@ -978,55 +974,76 @@ def main():
                                                 (assignments_df['date'].dt.month <= end_month)]
                 
                 if not assignments_df.empty:
-                    # Calculate hours based on the specified rules
-                    def calculate_hours(row):
+                    # Get sections from the database (ensure it's available in local scope)
+                    local_sections = db.get_sections()
+                    
+                    # Calculate hours based on the new rules
+                    def calculate_hours(row, sections_list, assignments_data):
                         shift_type = row['section_name']
                         weekday = row['date'].weekday()  # 0=Monday, 4=Friday, 5=Saturday, 6=Sunday
                         is_festivo = row['is_festivo']
                         is_weekend = row['is_weekend']
+                        date = row['date']
                         
                         # Initialize the counters
-                        guard_hours = 0
-                        work_day_hours = 0
+                        total_hours = 0
                         
-                        # Check if it's HEMS
-                        if 'HEMS' in shift_type:
-                            if 'tarde' in shift_type:
-                                work_day_hours = 8  # Afternoon HEMS: 8h work
-                            elif 'festivo' in shift_type:
-                                guard_hours = 8  # 16h HEMS (holiday): 8h shift + 8h work
-                                work_day_hours = 8
-                            else:  # Morning HEMS
-                                work_day_hours = 8  # Morning HEMS: 8h work
+                        # UCI_G_lab: always counts 7 hours
+                        if shift_type == 'UCI_G_lab':
+                            total_hours = 7
                         
-                        # Check if it's a Coordis shift
-                        elif 'Coordis' in shift_type:
-                            if 'festivo' in shift_type or is_festivo or is_weekend:
-                                guard_hours = 12  # Cordi holiday: 12h shift
-                            elif 'nocturno' in shift_type:
-                                work_day_hours = 12  # Cordi night: counts as 12h work day
-                            else:  # Cordi day
-                                work_day_hours = 12  # Cordi day: counts as 12h work day
+                        # UCI_G_festivo: counts 24 hours, except when there's also HEMS_festivo that day (then 16)
+                        elif shift_type == 'UCI_G_festivo':
+                            # Check if there's a HEMS_festivo on the same day
+                            same_day_assignments = assignments_data[assignments_data['date'].dt.date == date.date()]
+                            has_hems_festivo = any('HEMS_festivo' in section for section in same_day_assignments['section_name'])
+                            
+                            if has_hems_festivo:
+                                total_hours = 16
+                            else:
+                                total_hours = 24
                         
-                        # Regular Guardias (Shifts)
+                        # HEMS_festivo: always counts 16 hours
+                        elif shift_type == 'HEMS_festivo':
+                            total_hours = 16
+                        
+                        # Coordis_diurno: counts 12 hours on Saturday and Sunday, 0 the rest
+                        elif shift_type == 'Coordis_diurno':
+                            if weekday in [5, 6]:  # Saturday, Sunday
+                                total_hours = 12
+                            else:
+                                total_hours = 0
+                        
+                        # Coordis_nocturno: counts 12 hours on Friday, Saturday and Sunday, 0 the rest
+                        elif shift_type == 'Coordis_nocturno':
+                            if weekday in [4, 5, 6]:  # Friday, Saturday, Sunday
+                                total_hours = 12
+                            else:
+                                total_hours = 0
+                        
+                        # For all Urg shifts, use the hours from the section's horas parameter
+                        elif 'Urg_G' in shift_type:
+                            # Find the section object and get its horas_turno
+                            section_obj = next((s for s in sections_list if s.nombre == shift_type), None)
+                            if section_obj:
+                                total_hours = section_obj.horas_turno
+                            else:
+                                total_hours = 0  # Default if section not found
+                        
+                        # For any other shifts, try to get hours from section
                         else:
-                            if is_festivo or is_weekend:
-                                if 'HEMS' in shift_type:  # Holiday with HEMS
-                                    guard_hours = 16
-                                    work_day_hours = 8
-                                else:  # Holiday without HEMS
-                                    guard_hours = 24
-                            elif weekday == 4:  # Friday
-                                guard_hours = 17
-                                work_day_hours = 8  # Standard work day
-                            else:  # Monday-Thursday
-                                guard_hours = 11
-                                work_day_hours = 8  # Standard work day
+                            section_obj = next((s for s in sections_list if s.nombre == shift_type), None)
+                            if section_obj:
+                                total_hours = section_obj.horas_turno
+                            else:
+                                total_hours = 0  # Default if section not found
                         
-                        return pd.Series([guard_hours, work_day_hours])
+                        return pd.Series([total_hours])
                     
-                    # Apply calculation to each row
-                    assignments_df[['guard_hours', 'work_day_hours']] = assignments_df.apply(calculate_hours, axis=1)
+                    # Apply calculation to each row with local_sections and assignments_df as arguments
+                    assignments_df[['total_hours']] = assignments_df.apply(
+                        lambda row: calculate_hours(row, local_sections, assignments_df), axis=1
+                    )
                     
                     # Create tabs for different views
                     tab1, tab2 = st.tabs(["Resum per Treballador", "Detall de Torns"])
@@ -1062,12 +1079,8 @@ def main():
                             pivot_df['Total'] = pivot_df.sum(axis=1)
 
                             # Add areas column to pivot_df
-                            
-                            with open("data/workers.json", "r") as f:
-                                workers_data = json.load(f)
-                            
-                            # Then convert the JSON back to Worker objects if needed
-                            workers = [Worker(**worker_data) for worker_data in workers_data]
+                            # Get workers from the database
+                            workers = db.get_workers()
                             uci = {}
                             urg = {}
                             for worker in workers:
@@ -1099,17 +1112,55 @@ def main():
                         torns_per_worker(assignments_df)
                         # Group by worker and calculate totals
                         worker_summary = assignments_df.groupby('worker_name').agg({
-                            'guard_hours': 'sum',
-                            'work_day_hours': 'sum',
+                            'total_hours': 'sum',
                             'date': 'count'
                         }).reset_index()
                         
-                        worker_summary.columns = ['Treballador', 'Hores de Guàrdia', 'Hores de Jornada', 'Total de Torns']
-                        worker_summary['Hores Totals'] = worker_summary['Hores de Guàrdia'] + worker_summary['Hores de Jornada']
+                        worker_summary.columns = ['Treballador', 'Hores Totals', 'Total de Torns']
                         
-                        # Display summary
+                        # Add UCI and Urg information
+                        # Get workers from the database
+                        workers = db.get_workers()
+                        uci = {}
+                        urg = {}
+                        for worker in workers:
+                            # Extract areas information if available
+                            if hasattr(worker, 'areas') and worker.areas:
+                                uci[worker.name] = "Sí" if "Guardia_UCI" in worker.areas else "No"
+                                urg[worker.name] = "Sí" if "Guardia_Urg" in worker.areas else "No"
+                            else:
+                                uci[worker.name] = "No"
+                                urg[worker.name] = "No"
+                        
+                        # Add the areas columns to the worker_summary
+                        worker_summary['UCI'] = worker_summary['Treballador'].map(uci)
+                        worker_summary['Urg'] = worker_summary['Treballador'].map(urg)
+                        
+                        # Reorder columns to put UCI and Urg first
+                        cols = ['Treballador', 'UCI', 'Urg', 'Hores Totals', 'Total de Torns']
+                        worker_summary = worker_summary[cols]
+                        
+                        # Display summary in tabs by worker type
                         st.subheader("Resum d'Hores per Treballador")
-                        st.dataframe(worker_summary.style.background_gradient(cmap='Reds', subset=['Hores Totals']))
+                        
+                        col1, col2 = st.columns(2)
+                        with col1:
+                            st.write("Treballadors d'UCI")
+                            # Filter for UCI workers
+                            uci_workers = worker_summary[worker_summary['UCI'] == 'Sí'].copy()
+                            if not uci_workers.empty:
+                                st.dataframe(uci_workers.style.format({'Hores Totals': '{:.0f}'}).background_gradient(cmap='Blues', subset=['Hores Totals']))
+                            else:
+                                st.info("No s'han trobat treballadors d'UCI en aquest període.")
+
+                        with col2:
+                            st.write("Treballadors d'Urgències")
+                            # Filter for Urg workers
+                            urg_workers = worker_summary[worker_summary['Urg'] == 'Sí'].copy()
+                            if not urg_workers.empty:
+                                st.dataframe(urg_workers.style.format({'Hores Totals': '{:.0f}'}).background_gradient(cmap='Reds', subset=['Hores Totals']))
+                            else:
+                                st.info("No s'han trobat treballadors d'Urgències en aquest període.")
                         
                         # def to_excel_with_formatting(df):
                         #     output = io.BytesIO()
@@ -1146,13 +1197,11 @@ def main():
                     with tab2:
                         # Group by worker and shift type
                         shift_breakdown = assignments_df.groupby(['worker_name', 'section_name']).agg({
-                            'guard_hours': 'sum',
-                            'work_day_hours': 'sum',
+                            'total_hours': 'sum',
                             'date': 'count'  # Count dates instead of section_name
                         }).reset_index()
                         
-                        shift_breakdown.columns = ['Treballador', 'Tipus de Torn', 'Hores de Guàrdia', 'Hores de Jornada', 'Número de Torns']                    
-                        shift_breakdown['Hores Totals'] = shift_breakdown['Hores de Guàrdia'] + shift_breakdown['Hores de Jornada']
+                        shift_breakdown.columns = ['Treballador', 'Tipus de Torn', 'Hores Totals', 'Número de Torns']
                         
                         # Sort by worker and total hours
                         shift_breakdown = shift_breakdown.sort_values(['Treballador', 'Hores Totals'], ascending=[True, False])

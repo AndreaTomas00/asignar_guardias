@@ -32,14 +32,15 @@ class ShiftAssigner:
             "Coordis_diurno": 2,
             "Coordis_nocturno": 3,
             "HEMS_festivo": 4,
-            "Coordis_festivo": 5,
-            "UCI_G_lab": 6,
-            "UCI_G_festivo": 7,
-            "Urg_G_noche_l": 8,
-            "Urg_G_tarde-noche_l": 9,
-            "Urg_G_festivo_mañana": 10,
+            "Coordis_festivo_dia": 5,
+            "Coordis_festivo_noche": 6,
+            "UCI_G_lab": 7,
+            "UCI_G_festivo": 8,
+            "Urg_G_noche_l": 9,
+            "Urg_G_tarde-noche_l": 10,
             "Urg_G_festivo_mañana": 11,
-            "Urg_G_refuerzo_fyf": 12,
+            "Urg_G_festivo_mañana": 12,
+            "Urg_G_refuerzo_fyf": 13,
             }
         self.calendario = calendario
         self.year = year
@@ -360,7 +361,8 @@ class ShiftAssigner:
             # Coordinators sections
             "Coordis_diurno": "Coordis", 
             "Coordis_nocturno": "Coordis",
-            "Coordis_festivo": "Coordis",
+            "Coordis_festivo_dia": "Coordis",
+            "Coordis_festivo_noche": "Coordis",
             
             # UCI sections
             "UCI_G_lab": "Guardia_UCI",
@@ -428,11 +430,8 @@ class ShiftAssigner:
                 # Check if section has specific dates and this date is not one of them
                 if hasattr(section, 'fechas') and section.fechas and len(section.fechas) > 0:
                     # Only continue with sections that have specific dates when the current date is in those dates
-                    self.logger.info(f"Current_date {type(current_date)} checking section {section.nombre} with specific dates {section.fechas}")
                     if str(current_date) not in section.fechas:
                         continue
-                    else:
-                        self.logger.info(f"  - Section {section.nombre} applies on {current_date} (specific date match)")
                 if current_date.weekday() == 4 and self.is_first_friday_of_month(current_date):
                     # Find the reinforcement section
                     refuerzo_section = next((s for s in all_sections if s.nombre == "Urg_G_refuerzo_fyf"), None)
@@ -448,11 +447,6 @@ class ShiftAssigner:
         
         # Log the shifts we need to assign
         self.logger.info(f"Need to assign {len(shifts_to_assign)} shifts in this period")
-        self.logger.info(f"Shifts to assign:")
-        for section in self.sections:
-            self.logger.info(f" {section.nombre}, ")
-
-        self.logger.info(f"Section priority: {self.sections_priority}")
         shifts_to_assign.sort(key=lambda x: (
             self.sections_priority.get(x[1].nombre, 99),  # First sort by section priority
             x[0]                                    # Then sort by date
@@ -468,17 +462,25 @@ class ShiftAssigner:
                 (shift_date.weekday() >= 4 or shift_date in festivos)  # Friday-Sunday or holiday
             )
             if is_urg_weekend:
-                # Group by year-month and weekend number within month
-                year_month = (shift_date.year, shift_date.month)
-                weekend_num = (shift_date.day - 1) // 7 + 1  # Weekend number in the month
+                # Group by weekend start date (Friday) to keep weekends together
+                # For Friday: use the same date
+                # For Saturday: use the previous day (Friday)
+                # For Sunday: use Friday (2 days back)
+                # For holidays on weekdays: use the date itself
+                if shift_date.weekday() == 4:  # Friday
+                    weekend_key = shift_date
+                elif shift_date.weekday() == 5:  # Saturday
+                    weekend_key = shift_date - timedelta(days=1)  # Previous Friday
+                elif shift_date.weekday() == 6:  # Sunday
+                    weekend_key = shift_date - timedelta(days=2)  # Previous Friday
+                else:
+                    # Holiday on weekday - use the date itself
+                    weekend_key = shift_date
                 
-                if year_month not in urg_weekend_shifts:
-                    urg_weekend_shifts[year_month] = {}
+                if weekend_key not in urg_weekend_shifts:
+                    urg_weekend_shifts[weekend_key] = []
                 
-                if weekend_num not in urg_weekend_shifts[year_month]:
-                    urg_weekend_shifts[year_month][weekend_num] = []
-                
-                urg_weekend_shifts[year_month][weekend_num].append((shift_date, section))
+                urg_weekend_shifts[weekend_key].append((shift_date, section))
             elif section.nombre == "Urg_G_noche_l":
                 urg_lab.append((shift_date, section))
             else:
@@ -556,18 +558,36 @@ class ShiftAssigner:
 
             # No eligible workers for this shift - need to backtrack
             if not eligible_workers:
-                if primer:
-                    timestamp = datetime_type.now().strftime("%Y%m%d_%H%M%S")
-                    export_filename = f"./data/assignments_before_backtrack_{timestamp}.csv"
-                    self.export_to_csv(export_filename)# Export current assignments to CSV
-                    primer=False
-                self.log_backtracking("no_eligible", date, section)
-                # Save current assignments to first_ass.csv
-                if first_ass:
-                    self.assignments.to_csv("./data/first_ass.csv", index=False)
-                    self.logger.info(f"Saved assignments to first_ass.csv before backtracking")
-                    first_ass = False
-
+                # CRITICAL FIX: Check if this shift is fundamentally impossible
+                # (i.e., no worker can EVER do this shift regardless of availability)
+                weekday = date.weekday()
+                weekday_name = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"][weekday]
+                
+                fundamentally_possible = False
+                for worker in self.workers:
+                    if (worker.state == "Alta" and
+                        worker.can_work_in_area(self._get_required_category(section))):
+                        
+                        # Check weekday eligibility for Monday-Thursday
+                        if 0 <= weekday <= 3:  # Monday to Thursday
+                            if hasattr(worker, 'days_assigned') and worker.days_assigned:
+                                section_days = worker.days_assigned.get(self._get_required_category(section), [])
+                                if weekday_name in section_days:
+                                    fundamentally_possible = True
+                                    break
+                        else:
+                            # For weekends/holidays, if worker can work in area, it's possible
+                            fundamentally_possible = True
+                            break
+                
+                if not fundamentally_possible:
+                    if self.logger:
+                        self.logger.error(f"FUNDAMENTAL ERROR: No worker can EVER work {section.nombre} on {weekday_name}s")
+                        self.logger.error(f"This is a configuration problem - please assign at least one worker to {weekday_name} for {self._get_required_category(section)}")
+                    print(f"CONFIGURATION ERROR: No worker assigned to work {section.nombre} on {weekday_name}s")
+                    print(f"Please check worker day assignments for {self._get_required_category(section)}")
+                    return False
+                
                 # Mark all possible assignments for this shift as tried
                 for worker in self.workers:
                     current_assignments_key = tuple((d.isoformat(), s.nombre, w.name) for d, s, w, _, _ in assignment_stack)
@@ -649,129 +669,125 @@ class ShiftAssigner:
         # Replace the current Urgencias weekend assignment section with this:
         
         self.logger.info("Starting Urgencias weekend shifts assignment")
-        for year_month, weekends in urg_weekend_shifts.items():
-            year, month = year_month
+        
+        # Get workers eligible for Urgencias shifts
+        urg_workers = [w for w in self.workers if w.can_work_in_area("Guardia_Urg")]
+        
+        # Sort workers consistently
+        urg_workers.sort(key=lambda w: w.name)
+        
+        # Process each weekend (now keyed by weekend start date)
+        for weekend_key, shifts in urg_weekend_shifts.items():
+            # Use the weekend key (Friday date) for rotation calculation
+            weekend_start_month = weekend_key.month
             
-            # Get workers eligible for Urgencias shifts
-            urg_workers = [w for w in self.workers if w.can_work_in_area("Guardia_Urg")]
+            # Use the weekend start month for rotation calculation
+            rotation_offset = (weekend_start_month - 1) % 3
             
-            # Sort workers consistently
-            urg_workers.sort(key=lambda w: w.name)
+            self.logger.info(f"Weekend starting {weekend_key.strftime('%Y-%m-%d')} uses rotation for month {weekend_start_month} (offset={rotation_offset})")
             
-            # For each weekend in this month
-            for weekend_num, shifts in weekends.items():
-                # DETERMINE ROTATION BASED ON WEEKEND START DATE (not individual shift months)
-                # Find the earliest date in this weekend to determine which month's rotation to use
-                weekend_start_date = min(shift_date for shift_date, _ in shifts)
-                weekend_start_month = weekend_start_date.month
-                
-                # Use the weekend start month for rotation calculation
-                rotation_offset = (weekend_start_month - 1) % 3
-                
-                self.logger.info(f"Weekend starting {weekend_start_date.strftime('%Y-%m-%d')} uses rotation for month {weekend_start_month} (offset={rotation_offset})")
-                
-                # HANDLE FIRST FRIDAYS ONCE, BEFORE ROLE ASSIGNMENTS
-                assigned_shifts = set()
-                
-                # Check if this weekend contains a first Friday
-                for shift_date, section in shifts:
-                    if self.is_first_friday_of_month(shift_date):
-                        self.logger.info(f"First Friday of the month detected on {shift_date.strftime('%Y-%m-%d')}")
-                        
-                        # Assign Friday shift to Violeta Fariña
-                        if section.nombre == "Urg_G_tarde-noche_l":
-                            violeta = next((w for w in urg_workers if w.name == "Violeta Fariña"), None)
-                            if violeta:
-                                self.assign_shift_with_dual_availability(shift_date, section, violeta, shift_availability, regular_availability, period_metrics, period_name)
-                                self.logger.info(f"Assigned Violeta Fariña to Friday shift {section.nombre} on {shift_date.strftime('%Y-%m-%d')}")
-                                
-                                # Mark as assigned
-                                assigned_shifts.add((shift_date.isoformat(), section.nombre))
-                                
-                                # Also handle Sunday morning for Violeta
-                                sunday_date = shift_date + timedelta(days=2)
-                                for sec in all_sections:
-                                    if sec.nombre == "Urg_G_festivo_mañana":
-                                        sunday_morning_section = sec
-                                        self.assign_shift_with_dual_availability(sunday_date, sunday_morning_section, violeta, shift_availability, regular_availability, period_metrics, period_name)
-                                        self.logger.info(f"Assigned Violeta Fariña to Sunday morning shift on {sunday_date.strftime('%Y-%m-%d')}")
-                                        
-                                        # Mark Sunday as assigned
-                                        assigned_shifts.add((sunday_date.isoformat(), sunday_morning_section.nombre))
-                                        break
-                        
-                        # Handle reinforcement shift for first Friday weekend
-                        elif section.nombre == "Urg_G_refuerzo_fyf":
-                            saturday_date = shift_date + timedelta(days=1)  # Saturday after first Friday
-                            eligible_workers = [
-                                w for w in urg_workers
-                                if w.name != "Violeta Fariña" and  # Exclude Violeta
-                                w.name in shift_availability.columns and 
-                                shift_availability.loc[saturday_date, w.name] and 
-                                w.state == "Alta"
-                            ]
-                            if eligible_workers:
-                                best_worker = self.find_best_worker_for_shift(eligible_workers, saturday_date, section, period_metrics)
-                                self.assign_shift_with_dual_availability(saturday_date, section, best_worker, shift_availability, regular_availability, period_metrics, period_name)
-                                self.logger.info(f"Assigned {best_worker.name} to refuerzo shift on {saturday_date.strftime('%Y-%m-%d')}")
-                                
-                                # Mark as assigned
-                                assigned_shifts.add((saturday_date.isoformat(), section.nombre))
-                
-                # Group shifts by type (excluding already assigned ones)
-                friday_shifts = []
-                saturday_morning_shifts = []
-                saturday_night_shifts = []
-                sunday_morning_shifts = []
-                sunday_night_shifts = []
-                refuerzo = []
-                
-                for shift_date, section in shifts:
-                    # Skip if already assigned in first Friday handling
-                    if (shift_date.isoformat(), section.nombre) in assigned_shifts:
-                        continue
-                        
-                    day_of_week = shift_date.weekday()
+            # HANDLE FIRST FRIDAYS ONCE, BEFORE ROLE ASSIGNMENTS
+            assigned_shifts = set()
+            
+            # Check if this weekend contains a first Friday
+            for shift_date, section in shifts:
+                if self.is_first_friday_of_month(shift_date):
+                    self.logger.info(f"First Friday of the month detected on {shift_date.strftime('%Y-%m-%d')}")
                     
-                    if day_of_week == 4:  # Friday
-                        friday_shifts.append((shift_date, section))
-                    elif day_of_week == 5:  # Saturday
-                        if "mañana" in section.nombre:
-                            saturday_morning_shifts.append((shift_date, section))
-                        elif "refuerzo" in section.nombre:
-                            refuerzo.append((shift_date, section))
-                        elif "noche" in section.nombre:
-                            saturday_night_shifts.append((shift_date, section))
-                    elif day_of_week == 6 or shift_date in festivos:  # Sunday or holiday
-                        if "mañana" in section.nombre:
-                            sunday_morning_shifts.append((shift_date, section))
-                        elif "noche" in section.nombre:
-                            sunday_night_shifts.append((shift_date, section))
-                        elif "refuerzo" in section.nombre:
-                            refuerzo.append((shift_date, section))
+                    # Assign Friday shift to Violeta Fariña
+                    if section.nombre == "Urg_G_tarde-noche_l":
+                        violeta = next((w for w in urg_workers if w.name == "Violeta Fariña"), None)
+                        if violeta:
+                            self.assign_shift_with_dual_availability(shift_date, section, violeta, shift_availability, regular_availability, period_metrics, period_name)
+                            self.logger.info(f"Assigned Violeta Fariña to Friday shift {section.nombre} on {shift_date.strftime('%Y-%m-%d')}")
+                            
+                            # Mark as assigned
+                            assigned_shifts.add((shift_date.isoformat(), section.nombre))
+                            
+                            # Also handle Sunday morning for Violeta
+                            sunday_date = shift_date + timedelta(days=2)
+                            for sec in self.sections:
+                                if sec.nombre == "Urg_G_festivo_mañana":
+                                    sunday_morning_section = sec
+                                    self.assign_shift_with_dual_availability(sunday_date, sunday_morning_section, violeta, shift_availability, regular_availability, period_metrics, period_name)
+                                    self.logger.info(f"Assigned Violeta Fariña to Sunday morning shift on {sunday_date.strftime('%Y-%m-%d')}")
+                                    
+                                    # Mark Sunday as assigned
+                                    assigned_shifts.add((sunday_date.isoformat(), sunday_morning_section.nombre))
+                                    break
+                    
+                    # Handle reinforcement shift for first Friday weekend
+                    elif section.nombre == "Urg_G_refuerzo_fyf":
+                        saturday_date = shift_date + timedelta(days=1)  # Saturday after first Friday
+                        eligible_workers = [
+                            w for w in urg_workers
+                            if w.name != "Violeta Fariña" and  # Exclude Violeta
+                            w.name in shift_availability.columns and 
+                            shift_availability.loc[saturday_date, w.name] and 
+                            w.state == "Alta"
+                        ]
+                        if eligible_workers:
+                            best_worker = self.find_best_worker_for_shift(eligible_workers, saturday_date, section, period_metrics)
+                            self.assign_shift_with_dual_availability(saturday_date, section, best_worker, shift_availability, regular_availability, period_metrics, period_name)
+                            self.logger.info(f"Assigned {best_worker.name} to refuerzo shift on {saturday_date.strftime('%Y-%m-%d')}")
+                            
+                            # Mark as assigned
+                            assigned_shifts.add((saturday_date.isoformat(), section.nombre))
+            
+            # Group shifts by type (excluding already assigned ones)
+            friday_shifts = []
+            saturday_morning_shifts = []
+            saturday_night_shifts = []
+            sunday_morning_shifts = []
+            sunday_night_shifts = []
+            refuerzo = []
+            
+            for shift_date, section in shifts:
+                # Skip if already assigned in first Friday handling
+                if (shift_date.isoformat(), section.nombre) in assigned_shifts:
+                    continue
+                    
+                day_of_week = shift_date.weekday()
                 
-                # NOW assign workers according to roles using the WEEKEND-CONSISTENT rotation
-                self._assign_role_shifts(
-                    0, rotation_offset, urg_workers, 
-                    friday_shifts + sunday_morning_shifts, 
-                    shift_availability, period_metrics, period_name, assigned_shifts
-                )
-        
-                self._assign_role_shifts(
-                    1, rotation_offset, urg_workers, 
-                    saturday_morning_shifts + sunday_night_shifts, 
-                    shift_availability, period_metrics, period_name, assigned_shifts
-                )
-        
-                self._assign_role_shifts(
-                    2, rotation_offset, urg_workers, 
-                    saturday_night_shifts, 
-                    shift_availability, period_metrics, period_name, assigned_shifts
-                )
-                
-                # Assign remaining reinforcement shifts
-                for shift_date, section in refuerzo:
-                    if (shift_date.isoformat(), section.nombre) not in assigned_shifts:
+                if day_of_week == 4:  # Friday
+                    friday_shifts.append((shift_date, section))
+                elif day_of_week == 5:  # Saturday
+                    if "mañana" in section.nombre:
+                        saturday_morning_shifts.append((shift_date, section))
+                    elif "refuerzo" in section.nombre:
+                        refuerzo.append((shift_date, section))
+                    elif "noche" in section.nombre:
+                        saturday_night_shifts.append((shift_date, section))
+                elif day_of_week == 6 or shift_date in festivos:  # Sunday or holiday
+                    if "mañana" in section.nombre:
+                        sunday_morning_shifts.append((shift_date, section))
+                    elif "noche" in section.nombre:
+                        sunday_night_shifts.append((shift_date, section))
+                    elif "refuerzo" in section.nombre:
+                        refuerzo.append((shift_date, section))
+            
+            # NOW assign workers according to roles using the WEEKEND-CONSISTENT rotation
+            self._assign_role_shifts(
+                0, rotation_offset, urg_workers, 
+                friday_shifts + sunday_morning_shifts, 
+                shift_availability, period_metrics, period_name, assigned_shifts
+            )
+    
+            self._assign_role_shifts(
+                1, rotation_offset, urg_workers, 
+                saturday_morning_shifts + sunday_night_shifts, 
+                shift_availability, period_metrics, period_name, assigned_shifts
+            )
+    
+            self._assign_role_shifts(
+                2, rotation_offset, urg_workers, 
+                saturday_night_shifts, 
+                shift_availability, period_metrics, period_name, assigned_shifts
+            )
+            
+            # Assign remaining reinforcement shifts
+            for shift_date, section in refuerzo:
+                if (shift_date.isoformat(), section.nombre) not in assigned_shifts:
                         eligible_workers = [
                             w for w in self.workers
                             if w.name in shift_availability.columns and
@@ -792,6 +808,10 @@ class ShiftAssigner:
                 return False
             date, section = urg_lab[urg_shift_index]
             self.logger.info(f"Processing Urgencias lab shift {urg_shift_index+1}/{len(urg_lab)}: {date.strftime('%Y-%m-%d')} ({weekdays[date.weekday()]}) {section.nombre}")
+            
+            # Initialize eligible workers list for this shift
+            eligible_workers = []
+            
             for worker in self.workers:
                 # Check if worker is available on this date and can work in this section
                 if (worker.name in shift_availability.columns and 
@@ -813,6 +833,7 @@ class ShiftAssigner:
                         if len(worker.days_assigned)==0:
                             is_eligible = False
                             self.logger.info(f"  - {worker.name} not eligible: doesn't have a day assigned from Monday to Thursday")
+                    
                     if is_eligible:
                         # Check if we've already tried this worker for this shift
                         potential_combination = current_assignments_key + ((date.isoformat(), section.nombre, worker.name),)
@@ -821,7 +842,8 @@ class ShiftAssigner:
                         else:
                             self.logger.info(f"  - {worker.name} already tried for this shift with this combination")
 
-                        self.log_backtracking("eligible", date, section, eligible_workers)
+            # Log eligible workers once after processing all workers
+            self.log_backtracking("eligible", date, section, eligible_workers)
 
             
             if not eligible_workers:
@@ -902,7 +924,6 @@ class ShiftAssigner:
                 for day in worker.ooo_days:
                     if day in availability.index:
                         availability.loc[day, worker.name] = False
-                        self.logger.info(f"Marking {day} as unavailable for {worker.name} (OOO day)")
             
             # NEW: Mark days based on worker's regular work schedule (dias_semana_jornada)
             if hasattr(worker, 'dias_semana_jornada') and worker.dias_semana_jornada:
@@ -910,7 +931,6 @@ class ShiftAssigner:
                     weekday_name = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"][date.weekday()]
                     if weekday_name not in worker.dias_semana_jornada:
                         availability.loc[date, worker.name] = False
-                        self.logger.info(f"Marking {date} as unavailable for {worker.name} (not in regular work schedule)")
         
         return availability
 
@@ -1145,8 +1165,8 @@ class ShiftAssigner:
                 else:  # Multi-area workers
                     # Encourage more balanced distribution
                     score -= uci_workload_score * 0.5
-                    score -= recent_shifts_count * 0.2
-                    score -= recent_hours * 0.1
+                    score -= recent_shifts_count * 0.3
+                    score -= recent_hours * 0.2
                     period_shifts = period_metrics[worker.name]['total_shifts']
                     score -= period_shifts * 0.2
             
@@ -1166,7 +1186,12 @@ class ShiftAssigner:
             self.logger.info(f"No shifts to assign for role {role_id} in period {period_name}")
             return
         
-        assigned_shifts = set()
+        # Use the passed assigned_shifts set, or create a new one if None
+        if assigned_shifts is None:
+            assigned_shifts = set()
+        else:
+            # Make a copy to avoid modifying the original
+            assigned_shifts = assigned_shifts.copy()
         
         self.logger.info(f"Starting assignment for role {role_id} in period {period_name} with {len(shifts)} shifts")
         
@@ -1238,6 +1263,7 @@ class ShiftAssigner:
                 # Assign ALL shifts for this weekend's role to the same worker
                 for shift_date, section in weekend_role_shifts:
                     self.assign_shift_with_dual_availability(shift_date, section, best_worker, availability, [], period_metrics, period_name)
+                    assigned_shifts.add((shift_date.isoformat(), section.nombre))
                     self.logger.info(f"Assigned role {role_id} to preferred worker {best_worker.name} on {shift_date.strftime('%Y-%m-%d')}")
             
             # If no preferred workers can do all shifts, try other eligible workers
@@ -1282,8 +1308,8 @@ class ShiftAssigner:
     def assign_all_shifts(self):
         """Assign shifts for the entire year in biweekly periods"""
         # Start with January 1, 2025
-        current_date = date(2025, 1, 1)
-        end_of_year = date(2025, 12, 31)
+        current_date = datetime_date(2025, 1, 1)
+        end_of_year = datetime_date(2025, 12, 31)
         
         period_number = 1
         
